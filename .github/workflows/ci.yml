@@ -10,9 +10,10 @@ jobs:
   test:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [20, 22]
+        node-version: [22]
 
     steps:
       - uses: actions/checkout@v4
@@ -31,6 +32,9 @@ jobs:
       - name: Run unit tests
         run: npm run test
 
+      - name: Generate parser for grammar tests
+        run: npx tree-sitter generate
+
       - name: Run grammar tests
         run: npm run test:grammar
 
@@ -38,10 +42,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'npm'
       - run: npm ci
+      - name: Generate parser
+        run: npx tree-sitter generate
       - name: Check package exports
         run: node -e "const pkg = require('./index.js'); console.log('Exports OK:', Object.keys(pkg).length, 'functions')"

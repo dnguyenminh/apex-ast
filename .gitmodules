@@ -1,0 +1,3 @@
+[submodule "sfapex-source"]
+	path = sfapex-source
+	url = https://github.com/aheber/tree-sitter-sfapex.git

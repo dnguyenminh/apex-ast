@@ -56,8 +56,8 @@ zig-out/
 temp_*.ps1
 export_*.txt
 
-# Submodule source (clone separately)
-sfapex-source/
+# Submodule source (managed by git submodule)
+# sfapex-source/  -- now a submodule
 
 # DOCX exports (generated)
 *.docx
