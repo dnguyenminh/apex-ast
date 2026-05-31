@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <label>Create Account Flow</label>
+    <processType>Flow</processType>
+    <status>Active</status>
+    <startElementReference>Check_Account_Type</startElementReference>
+    <variables>
+        <name>accountName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>accountType</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>newAccountId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <decisions>
+        <name>Check_Account_Type</name>
+        <label>Check Account Type</label>
+        <defaultConnector>
+            <targetReference>Create_Standard_Account</targetReference>
+        </defaultConnector>
+        <rules>
+            <name>Is_Enterprise</name>
+            <label>Is Enterprise</label>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>accountType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>Enterprise</rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Enterprise_Account</targetReference>
+            </connector>
+        </rules>
+    </decisions>
+    <recordCreates>
+        <name>Create_Enterprise_Account</name>
+        <label>Create Enterprise Account</label>
+        <object>Account</object>
+        <inputAssignments>
+            <field>Name</field>
+            <value>accountName</value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>Enterprise</value>
+        </inputAssignments>
+        <assignRecordIdToReference>newAccountId</assignRecordIdToReference>
+        <connector>
+            <targetReference>End_Flow</targetReference>
+        </connector>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Standard_Account</name>
+        <label>Create Standard Account</label>
+        <object>Account</object>
+        <inputAssignments>
+            <field>Name</field>
+            <value>accountName</value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>Standard</value>
+        </inputAssignments>
+        <assignRecordIdToReference>newAccountId</assignRecordIdToReference>
+    </recordCreates>
+</Flow>

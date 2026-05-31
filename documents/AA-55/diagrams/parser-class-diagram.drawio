@@ -1,0 +1,93 @@
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="800" math="0" shadow="0" adaptiveColors="auto">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="title" value="&lt;b&gt;Parser Class/Module Diagram — salesforce-ast&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="450" y="10" width="380" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="main_entry" value="&lt;b&gt;index.js&lt;/b&gt;&#10;─────────────&#10;parseProject()&#10;toKBPayload()&#10;scanProject()&#10;buildDependencyGraph()" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="520" y="60" width="200" height="110" as="geometry"/>
+    </mxCell>
+    <mxCell id="apex_parser" value="&lt;b&gt;apex-parser.js&lt;/b&gt;&#10;─────────────&#10;parseApexFile(path)&#10;initParser()" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="60" y="250" width="180" height="90" as="geometry"/>
+    </mxCell>
+    <mxCell id="flow_parser" value="&lt;b&gt;flow-parser.js&lt;/b&gt;&#10;─────────────&#10;parseFlowFile(path)&#10;parseFlowString(xml)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="270" y="250" width="180" height="90" as="geometry"/>
+    </mxCell>
+    <mxCell id="object_parser" value="&lt;b&gt;object-parser.js&lt;/b&gt;&#10;─────────────&#10;parseObjectFile(path)&#10;parseObjectString(xml)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="480" y="250" width="180" height="90" as="geometry"/>
+    </mxCell>
+    <mxCell id="field_parser" value="&lt;b&gt;field-parser.js&lt;/b&gt;&#10;─────────────&#10;parseFieldFile(path)&#10;parseFieldString(xml)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="690" y="250" width="180" height="90" as="geometry"/>
+    </mxCell>
+    <mxCell id="perm_parser" value="&lt;b&gt;permission-parser.js&lt;/b&gt;&#10;─────────────&#10;parsePermissionSetFile()&#10;parseProfileFile()" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="900" y="250" width="190" height="90" as="geometry"/>
+    </mxCell>
+    <mxCell id="label_parser" value="&lt;b&gt;label-parser.js&lt;/b&gt;&#10;─────────────&#10;parseLabelFile()&#10;parseLabelString()" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1120" y="250" width="170" height="90" as="geometry"/>
+    </mxCell>
+    <mxCell id="lwc_js" value="&lt;b&gt;lwc-js-parser.js&lt;/b&gt;&#10;─────────────&#10;parseLWCJsFile()&#10;parseLWCJsContent()" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="60" y="420" width="180" height="90" as="geometry"/>
+    </mxCell>
+    <mxCell id="lwc_html" value="&lt;b&gt;lwc-html-parser.js&lt;/b&gt;&#10;─────────────&#10;parseLWCHtmlFile()&#10;parseLWCHtmlContent()" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="270" y="420" width="190" height="90" as="geometry"/>
+    </mxCell>
+    <mxCell id="lwc_css" value="&lt;b&gt;lwc-css-parser.js&lt;/b&gt;&#10;─────────────&#10;parseLWCCssFile()&#10;parseLWCCssContent()" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="490" y="420" width="180" height="90" as="geometry"/>
+    </mxCell>
+    <mxCell id="scanner_mod" value="&lt;b&gt;scanner.js&lt;/b&gt;&#10;─────────────&#10;scanProject(path)&#10;getManifestSummary()" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="60" y="590" width="180" height="90" as="geometry"/>
+    </mxCell>
+    <mxCell id="apex_indexer" value="&lt;b&gt;apex-indexer.js&lt;/b&gt;&#10;─────────────&#10;indexApexFile(path)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="270" y="590" width="180" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="flow_indexer" value="&lt;b&gt;flow-indexer.js&lt;/b&gt;&#10;─────────────&#10;indexFlowFile(path)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="480" y="590" width="180" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="obj_indexer" value="&lt;b&gt;object-indexer.js&lt;/b&gt;&#10;─────────────&#10;indexObjectFile(path)&#10;indexFieldFile(path)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="690" y="590" width="180" height="90" as="geometry"/>
+    </mxCell>
+    <mxCell id="lwc_indexer" value="&lt;b&gt;lwc-indexer.js&lt;/b&gt;&#10;─────────────&#10;indexLWCComponent(dir)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="900" y="590" width="180" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="dep_graph_mod" value="&lt;b&gt;dependency-graph.js&lt;/b&gt;&#10;─────────────&#10;DependencyGraph (class)&#10;buildDependencyGraph()" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;verticalAlign=top;spacingTop=5;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1120" y="590" width="190" height="90" as="geometry"/>
+    </mxCell>
+    <mxCell id="ts_dep" value="&lt;b&gt;tree-sitter&lt;/b&gt;&#10;(npm dependency)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;dashed=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="140" width="140" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="fxp_dep" value="&lt;b&gt;fast-xml-parser&lt;/b&gt;&#10;(npm dependency)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;dashed=1;" vertex="1" parent="1">
+      <mxGeometry x="900" y="140" width="140" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="main_entry" target="apex_parser" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="main_entry" target="flow_parser" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="main_entry" target="object_parser" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e4" value="uses" style="rounded=1;html=1;endArrow=classic;endSize=6;dashed=1;fontSize=10;" edge="1" source="apex_parser" target="ts_dep" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e5" value="uses" style="rounded=1;html=1;endArrow=classic;endSize=6;dashed=1;fontSize=10;" edge="1" source="flow_parser" target="fxp_dep" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="main_entry" target="scanner_mod" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="main_entry" target="dep_graph_mod" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e8" value="calls" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="apex_indexer" target="apex_parser" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e9" value="calls" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="flow_indexer" target="flow_parser" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e10" value="calls" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="lwc_indexer" target="lwc_js" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

@@ -1,0 +1,52 @@
+==================
+Error Recovery Partial Parse
+==================
+
+public class ErrTest {
+    public void valid() {
+        System.debug('ok');
+    }
+    public void broken() {
+        @@@ invalid syntax here;
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (expression_statement
+            (method_invocation
+              object: (identifier)
+              name: (identifier)
+              arguments: (argument_list
+                (string_literal))))))
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (ERROR)
+          (local_variable_declaration
+            (modifiers
+              (annotation
+                name: (identifier)))
+            type: (type_identifier)
+            declarator: (variable_declarator
+              name: (identifier))))))))

@@ -1,0 +1,60 @@
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="700" math="0" shadow="0" adaptiveColors="auto">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="title" value="&lt;b&gt;AA-3: Native Binding Architecture (grammar.js to parser.c to .node)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="350" y="10" width="520" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="grammar_js" value="&lt;b&gt;grammar.js&lt;/b&gt;&#xa;Apex Grammar DSL&#xa;(inherits sfapex)" style="shape=mxgraph.flowchart.document;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="60" y="100" width="160" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="ts_generate" value="&lt;b&gt;tree-sitter generate&lt;/b&gt;&#xa;Grammar DSL to C" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="300" y="100" width="180" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="parser_c" value="&lt;b&gt;src/parser.c&lt;/b&gt;&#xa;Generated C code&#xa;(~500KB)" style="shape=mxgraph.flowchart.document;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c62828;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="560" y="100" width="160" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="binding_gyp" value="&lt;b&gt;binding.gyp&lt;/b&gt;&#xa;node-gyp config&#xa;sources: [parser.c, binding.cc]" style="shape=mxgraph.flowchart.document;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="60" y="260" width="200" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="binding_cc" value="&lt;b&gt;bindings/node/binding.cc&lt;/b&gt;&#xa;N-API wrapper&#xa;tree_sitter_apex()" style="shape=mxgraph.flowchart.document;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="60" y="380" width="200" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="node_gyp" value="&lt;b&gt;node-gyp rebuild&lt;/b&gt;&#xa;C/C++ compiler&#xa;(MSVC / GCC / Clang)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="380" y="300" width="180" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="node_addon" value="&lt;b&gt;tree-sitter-apex.node&lt;/b&gt;&#xa;Native Node.js addon&#xa;Platform-specific binary" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="660" y="300" width="200" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="index_js" value="&lt;b&gt;bindings/node/index.js&lt;/b&gt;&#xa;require(addon)&#xa;module.exports = Language" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="660" y="430" width="200" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="consumer" value="&lt;b&gt;Consumer App&lt;/b&gt;&#xa;const Parser = require('tree-sitter')&#xa;parser.setLanguage(apex)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="660" y="560" width="200" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="grammar_js" target="ts_generate" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="ts_generate" target="parser_c" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e3" value="sources" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="parser_c" target="node_gyp" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e4" value="config" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="binding_gyp" target="node_gyp" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e5" value="wrapper" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="binding_cc" target="node_gyp" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e6" value="produces" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="node_gyp" target="node_addon" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e7" value="loads" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="index_js" target="node_addon" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e8" value="require()" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="consumer" target="index_js" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

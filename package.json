@@ -1,0 +1,40 @@
+{
+  "name": "salesforce-ast",
+  "version": "2.0.0",
+  "description": "Salesforce AST Parser & Indexer - Parse Apex, XML metadata, LWC components with dependency graph",
+  "main": "index.js",
+  "scripts": {
+    "generate": "tree-sitter generate",
+    "test:grammar": "tree-sitter test",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "keywords": ["salesforce", "apex", "tree-sitter", "parser", "ast", "metadata", "lwc", "sfdx", "flow", "indexer"],
+  "author": "Nguyen Minh Duc <dnguyenminh@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "nan": "^2.27.0",
+    "node-addon-api": "^8.8.0",
+    "tree-sitter-cli": "^0.26.9",
+    "tree-sitter-sfapex": "^3.0.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.7"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.8.0",
+    "tree-sitter": "^0.25.0",
+    "web-tree-sitter": "^0.26.9"
+  },
+  "files": ["index.js", "src/", "README.md", "LICENSE"],
+  "exports": {
+    ".": "./index.js",
+    "./parsers/xml": "./src/parsers/xml/index.js",
+    "./parsers/lwc": "./src/parsers/lwc/index.js",
+    "./parsers/apex": "./src/parsers/apex-parser.js",
+    "./indexer": "./src/indexer/index.js",
+    "./scanner": "./src/indexer/scanner.js",
+    "./graph": "./src/indexer/dependency-graph.js"
+  }
+}

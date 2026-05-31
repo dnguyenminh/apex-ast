@@ -1,0 +1,59 @@
+==================
+Enum Declaration
+==================
+
+public enum Season { SPRING, SUMMER, FALL, WINTER }
+
+---
+
+(parser_output
+  (enum_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (enum_body
+      (enum_constant
+        name: (identifier))
+      (enum_constant
+        name: (identifier))
+      (enum_constant
+        name: (identifier))
+      (enum_constant
+        name: (identifier)))))
+
+==================
+Enum Usage in Variable
+==================
+
+public class EnumUsage {
+    public void test() {
+        Season s = Season.SPRING;
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (local_variable_declaration
+            type: (type_identifier)
+            declarator: (variable_declarator
+              name: (identifier)
+              (assignment_operator)
+              value: (field_access
+                object: (identifier)
+                field: (identifier)))))))))

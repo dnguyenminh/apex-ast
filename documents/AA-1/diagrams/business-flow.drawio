@@ -1,0 +1,66 @@
+<mxGraphModel dx="1200" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="600" math="0" shadow="0" adaptiveColors="auto">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="title" value="&lt;b&gt;AA-1: Project Initialize &amp;mdash; Business Flow&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="350" y="10" width="360" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="start" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="60" y="80" width="40" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="step1" value="&lt;b&gt;1. Init npm project&lt;/b&gt;&#10;package.json&#10;scripts: generate, test" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="160" y="70" width="160" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="step2" value="&lt;b&gt;2. Install tree-sitter-cli&lt;/b&gt;&#10;devDependency v0.26.9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="380" y="70" width="160" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="step3" value="&lt;b&gt;3. Clone sfapex source&lt;/b&gt;&#10;tree-sitter-sfapex v3.0" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="600" y="70" width="160" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="step4" value="&lt;b&gt;4. Create grammar.js&lt;/b&gt;&#10;require(sfapex)&#10;grammar(apexGrammar, {...})" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="820" y="70" width="180" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="step5" value="&lt;b&gt;5. Configure tree-sitter.json&lt;/b&gt;&#10;name: apex, scope: source.apex" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="160" y="220" width="180" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="step6" value="&lt;b&gt;6. tree-sitter generate&lt;/b&gt;&#10;src/parser.c (~500KB)&#10;src/grammar.json&#10;src/node-types.json" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="420" y="210" width="180" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="step7" value="&lt;b&gt;7. Create test case&lt;/b&gt;&#10;test/corpus/basic_class.txt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="680" y="220" width="160" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="step8" value="&lt;b&gt;8. tree-sitter test&lt;/b&gt;&#10;All tests pass" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="920" y="220" width="140" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="end" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+      <mxGeometry x="970" y="340" width="40" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="start" target="step1" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="step1" target="step2" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="step2" target="step3" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="step3" target="step4" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="step4" target="step5" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="step5" target="step6" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="step6" target="step7" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="step7" target="step8" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="step8" target="end" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

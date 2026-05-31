@@ -1,0 +1,66 @@
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="700" math="0" shadow="0" adaptiveColors="auto">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="title" value="&lt;b&gt;AA-55: XML Parsing Data Flow&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="450" y="10" width="300" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="xml_files" value="&lt;b&gt;XML Metadata Files&lt;/b&gt;&#xa;.flow-meta.xml&#xa;.object-meta.xml&#xa;.field-meta.xml&#xa;.permissionset-meta.xml&#xa;.labels-meta.xml&#xa;.layout-meta.xml" style="shape=mxgraph.flowchart.document;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="60" y="100" width="200" height="130" as="geometry"/>
+    </mxCell>
+    <mxCell id="fxp" value="&lt;b&gt;fast-xml-parser&lt;/b&gt;&#xa;XML to JS Object&#xa;(preserveOrder: true)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="360" y="120" width="180" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="flow_parser" value="&lt;b&gt;flow-parser.js&lt;/b&gt;&#xa;parseFlowFile()&#xa;Extract: nodes, DML,&#xa;variables, subflows" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="640" y="60" width="180" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="obj_parser" value="&lt;b&gt;object-parser.js&lt;/b&gt;&#xa;parseObjectFile()&#xa;Extract: schema,&#xa;relationships, fields" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="640" y="160" width="180" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="field_parser" value="&lt;b&gt;field-parser.js&lt;/b&gt;&#xa;parseFieldFile()&#xa;Extract: type, formula,&#xa;picklist values" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="640" y="260" width="180" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="perm_parser" value="&lt;b&gt;permission-parser.js&lt;/b&gt;&#xa;parsePermissionSetFile()&#xa;Extract: object/field perms" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="640" y="360" width="180" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="label_parser" value="&lt;b&gt;label-parser.js&lt;/b&gt;&#xa;parseLabelFile()&#xa;Extract: labels, categories" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="640" y="450" width="180" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="output" value="&lt;b&gt;Parsed JSON Output&lt;/b&gt;&#xa;Structured data&#xa;Ready for indexing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="940" y="220" width="180" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="e1" value="read" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="xml_files" target="fxp" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="fxp" target="flow_parser" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="fxp" target="obj_parser" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="fxp" target="field_parser" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="fxp" target="perm_parser" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="fxp" target="label_parser" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="flow_parser" target="output" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="obj_parser" target="output" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="field_parser" target="output" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="perm_parser" target="output" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="label_parser" target="output" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

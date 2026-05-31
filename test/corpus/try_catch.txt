@@ -1,0 +1,119 @@
+==================
+Try Catch Finally
+==================
+
+public class ExTest {
+    public void test() {
+        try {
+            insert new Account();
+        } catch (DmlException e) {
+            System.debug(e.getMessage());
+        } finally {
+            System.debug('done');
+        }
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (try_statement
+            body: (block
+              (expression_statement
+                (dml_expression
+                  (dml_type
+                    (insert))
+                  target: (object_creation_expression
+                    type: (type_identifier)
+                    arguments: (argument_list)))))
+            (catch_clause
+              (formal_parameter
+                type: (type_identifier)
+                name: (identifier))
+              body: (block
+                (expression_statement
+                  (method_invocation
+                    object: (identifier)
+                    name: (identifier)
+                    arguments: (argument_list
+                      (method_invocation
+                        object: (identifier)
+                        name: (identifier)
+                        arguments: (argument_list)))))))
+            (finally_clause
+              (block
+                (expression_statement
+                  (method_invocation
+                    object: (identifier)
+                    name: (identifier)
+                    arguments: (argument_list
+                      (string_literal))))))))))))
+
+==================
+Basic Try Catch
+==================
+
+public class TryCatch {
+    public void test() {
+        try {
+            insert new Account();
+        } catch (DmlException e) {
+            System.debug(e.getMessage());
+        }
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (try_statement
+            body: (block
+              (expression_statement
+                (dml_expression
+                  (dml_type
+                    (insert))
+                  target: (object_creation_expression
+                    type: (type_identifier)
+                    arguments: (argument_list)))))
+            (catch_clause
+              (formal_parameter
+                type: (type_identifier)
+                name: (identifier))
+              body: (block
+                (expression_statement
+                  (method_invocation
+                    object: (identifier)
+                    name: (identifier)
+                    arguments: (argument_list
+                      (method_invocation
+                        object: (identifier)
+                        name: (identifier)
+                        arguments: (argument_list)))))))))))))

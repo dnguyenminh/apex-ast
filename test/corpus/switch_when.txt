@@ -1,0 +1,72 @@
+==================
+Switch When Statement
+==================
+
+public class SwitchTest {
+    public void test(Integer x) {
+        switch on x {
+            when 1 {
+                System.debug('one');
+            }
+            when 2 {
+                System.debug('two');
+            }
+            when else {
+                System.debug('other');
+            }
+        }
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters
+          (formal_parameter
+            type: (type_identifier)
+            name: (identifier)))
+        body: (block
+          (switch_expression
+            condition: (identifier)
+            body: (switch_block
+              (switch_rule
+                (switch_label
+                  (int))
+                (block
+                  (expression_statement
+                    (method_invocation
+                      object: (identifier)
+                      name: (identifier)
+                      arguments: (argument_list
+                        (string_literal))))))
+              (switch_rule
+                (switch_label
+                  (int))
+                (block
+                  (expression_statement
+                    (method_invocation
+                      object: (identifier)
+                      name: (identifier)
+                      arguments: (argument_list
+                        (string_literal))))))
+              (switch_rule
+                (switch_label)
+                (block
+                  (expression_statement
+                    (method_invocation
+                      object: (identifier)
+                      name: (identifier)
+                      arguments: (argument_list
+                        (string_literal)))))))))))))

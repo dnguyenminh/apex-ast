@@ -1,0 +1,51 @@
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="700" math="0" shadow="0" adaptiveColors="auto">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="title" value="&lt;b&gt;AA-58: Test Strategy Overview&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="450" y="10" width="300" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="level_boundary" value="Test Levels" style="shape=rectangle;dashed=1;fillColor=none;strokeColor=#666666;verticalAlign=top;fontStyle=1;fontSize=14;spacingTop=10;html=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="60" width="1200" height="200" as="geometry"/>
+    </mxCell>
+    <mxCell id="unit" value="&lt;b&gt;Unit Tests&lt;/b&gt;&#xa;Individual parsers&#xa;Pure functions&#xa;(vitest)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="90" y="100" width="160" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="grammar" value="&lt;b&gt;Grammar Tests&lt;/b&gt;&#xa;tree-sitter test&#xa;Corpus files&#xa;(test/corpus/)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="290" y="100" width="160" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="integration" value="&lt;b&gt;Integration Tests&lt;/b&gt;&#xa;Parser + Indexer&#xa;End-to-end pipeline&#xa;Real SFDX projects" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="490" y="100" width="180" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="e2e" value="&lt;b&gt;E2E Tests&lt;/b&gt;&#xa;Full parseProject()&#xa;KB payload generation&#xa;Dependency graph" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="710" y="100" width="180" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="perf" value="&lt;b&gt;Performance Tests&lt;/b&gt;&#xa;Large projects&#xa;Memory usage&#xa;Parse time benchmarks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c62828;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="930" y="100" width="180" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="coverage_boundary" value="Coverage Matrix" style="shape=rectangle;dashed=1;fillColor=none;strokeColor=#666666;verticalAlign=top;fontStyle=1;fontSize=14;spacingTop=10;html=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="300" width="1200" height="200" as="geometry"/>
+    </mxCell>
+    <mxCell id="apex_cov" value="&lt;b&gt;Apex Parser&lt;/b&gt;&#xa;Classes, Methods&#xa;SOQL, DML, Annotations&#xa;Triggers, Enums" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="90" y="340" width="160" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="xml_cov" value="&lt;b&gt;XML Parsers&lt;/b&gt;&#xa;Flows, Objects&#xa;Fields, Permissions&#xa;Labels, Layouts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="290" y="340" width="160" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="lwc_cov" value="&lt;b&gt;LWC Parsers&lt;/b&gt;&#xa;JS, HTML, CSS&#xa;Wire, API, Events&#xa;Child components" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="490" y="340" width="160" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="indexer_cov" value="&lt;b&gt;Indexers&lt;/b&gt;&#xa;Apex, Flow, Object&#xa;LWC indexing&#xa;Data extraction" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="690" y="340" width="160" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="graph_cov" value="&lt;b&gt;Dependency Graph&lt;/b&gt;&#xa;Node creation&#xa;Edge relationships&#xa;Impact analysis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="890" y="340" width="160" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="kb_cov" value="&lt;b&gt;KB Payload&lt;/b&gt;&#xa;toKBPayload()&#xa;Format validation&#xa;searchText quality" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1090" y="340" width="160" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="target" value="&lt;b&gt;Target: 80%+ code coverage, 100% parser rule coverage&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="400" y="540" width="420" height="30" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

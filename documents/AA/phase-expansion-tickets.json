@@ -1,0 +1,263 @@
+{
+  "project": "AA",
+  "description": "Phase mở rộng — XML Metadata Parsers, LWC/Aura Parsers, Indexer Module, Testing & Docs",
+  "epics": [
+    {
+      "key": "Epic 5",
+      "summary": "XML Metadata Parsers",
+      "description": "Mở rộng project để parse các Salesforce metadata XML types (Flow, Object, Field, Validation Rule, Permission Set, Label, Layout). Sử dụng fast-xml-parser hoặc xml2js.",
+      "issueType": "Epic",
+      "labels": ["epic-5-xml-parsers"],
+      "tasks": [
+        {
+          "summary": "Download Salesforce metadata.xsd & auto-generate TypeScript interfaces",
+          "description": "Download XSD schema chính thức từ Salesforce (forcedotcom/idecore hoặc từ Metadata API WSDL) và dùng tool tự động sinh TypeScript interfaces cho tất cả metadata types.\n\nSteps:\n1. Download metadata.xsd từ https://github.com/forcedotcom/idecore/blob/master/com.salesforce.ide.api/schema/metadata.xsd\n2. Dùng tool xsd2ts, cxsd, hoặc tương đương để generate TypeScript interfaces\n3. Filter và export interfaces cho các types cần thiết: Flow, CustomObject, CustomField, ValidationRule, PermissionSet, Profile, CustomLabels, Layout\n4. Tạo file src/types/metadata-types.ts chứa generated interfaces\n5. Cấu hình script trong package.json để re-generate khi cần update API version\n\nBenefits:\n- Type-safe XML parsing (IDE autocomplete)\n- Validate metadata files against schema\n- Giảm 60-70% effort viết parser thủ công\n- Dễ maintain khi Salesforce update API version",
+          "issueType": "Task",
+          "labels": ["epic-5-xml-parsers"],
+          "storyPoints": 3
+        },
+        {
+          "summary": "Cài đặt XML parser library",
+          "description": "Thêm dependency fast-xml-parser (hoặc xml2js) vào project. Cấu hình parser options phù hợp cho Salesforce metadata XML format (preserve attributes, arrays, etc.).",
+          "issueType": "Task",
+          "labels": ["epic-5-xml-parsers"],
+          "storyPoints": 2
+        },
+        {
+          "summary": "Flow Parser — Parse .flow-meta.xml",
+          "description": "Parse Salesforce Flow metadata XML files.\n\nExtract:\n- Flow type (Screen Flow, Record-Triggered, Scheduled, etc.)\n- Decisions (conditions, outcomes)\n- Assignments (variable assignments)\n- Variables (name, type, default value)\n- DML operations (Create/Update/Delete records)\n- Connectors (flow logic connections)\n- Screens (screen elements, fields, components)\n- Subflows (referenced flows)\n- Loop elements\n- Wait elements\n\nInput: .flow-meta.xml file path\nOutput: Structured JSON with flow logic tree",
+          "issueType": "Story",
+          "labels": ["epic-5-xml-parsers"],
+          "storyPoints": 5
+        },
+        {
+          "summary": "Custom Object Parser — Parse .object-meta.xml",
+          "description": "Parse Salesforce Custom Object metadata XML files.\n\nExtract:\n- Object name, label, plural label\n- Fields (all field definitions)\n- Relationships (Lookup, Master-Detail, External Lookup)\n- Record Types (name, active, business process)\n- Validation Rules (condition formula, error message, active status)\n- List Views\n- Sharing model\n- Compact Layouts\n- Field Sets\n\nInput: .object-meta.xml file path\nOutput: Structured JSON with complete object schema",
+          "issueType": "Story",
+          "labels": ["epic-5-xml-parsers"],
+          "storyPoints": 5
+        },
+        {
+          "summary": "Custom Field Parser — Parse .field-meta.xml",
+          "description": "Parse Salesforce Custom Field metadata XML files.\n\nExtract:\n- Field API name, label\n- Field type (Text, Number, Picklist, Formula, Lookup, etc.)\n- Formula expression (for formula fields)\n- Picklist values (for picklist fields)\n- Relationship info (referenced object, relationship name)\n- Required, unique, external ID flags\n- Default value\n- Description, help text\n- Length, precision, scale\n\nInput: .field-meta.xml file path\nOutput: Structured JSON with field definition",
+          "issueType": "Story",
+          "labels": ["epic-5-xml-parsers"],
+          "storyPoints": 3
+        },
+        {
+          "summary": "Validation Rule Parser — Parse validationRule-meta.xml",
+          "description": "Parse Salesforce Validation Rule metadata.\n\nExtract:\n- Rule name\n- Active status\n- Condition formula (errorConditionFormula)\n- Error message\n- Error display field\n- Description\n\nInput: Validation rule XML (standalone or within .object-meta.xml)\nOutput: Structured JSON with rule definition",
+          "issueType": "Story",
+          "labels": ["epic-5-xml-parsers"],
+          "storyPoints": 2
+        },
+        {
+          "summary": "Permission Set/Profile Parser — Parse .permissionset-meta.xml & .profile-meta.xml",
+          "description": "Parse Salesforce Permission Set and Profile metadata XML files.\n\nExtract:\n- Object permissions (CRUD per object)\n- Field permissions (read/edit per field)\n- Tab visibility settings\n- Apex class access\n- Visualforce page access\n- Custom permissions\n- Login IP ranges\n- Session settings\n- Record type assignments\n\nInput: .permissionset-meta.xml or .profile-meta.xml file path\nOutput: Structured JSON with permission matrix",
+          "issueType": "Story",
+          "labels": ["epic-5-xml-parsers"],
+          "storyPoints": 3
+        },
+        {
+          "summary": "Custom Label Parser — Parse .labels-meta.xml",
+          "description": "Parse Salesforce Custom Labels metadata XML file.\n\nExtract:\n- Label full name (API name)\n- Label value (text)\n- Category\n- Language\n- Protected flag\n- Short description\n\nInput: CustomLabels.labels-meta.xml file path\nOutput: Structured JSON array of label definitions",
+          "issueType": "Story",
+          "labels": ["epic-5-xml-parsers"],
+          "storyPoints": 2
+        },
+        {
+          "summary": "Page Layout Parser — Parse .layout-meta.xml",
+          "description": "Parse Salesforce Page Layout metadata XML files.\n\nExtract:\n- Layout sections (columns, style)\n- Field arrangement per section\n- Related lists (fields, sort order, filters)\n- Quick action assignments\n- Mini layout fields\n- Feed layout settings\n- Platform action list\n\nInput: .layout-meta.xml file path\nOutput: Structured JSON with layout structure",
+          "issueType": "Story",
+          "labels": ["epic-5-xml-parsers"],
+          "storyPoints": 3
+        }
+      ]
+    },
+    {
+      "key": "Epic 6",
+      "summary": "LWC/Aura Component Parsers",
+      "description": "Parse Lightning Web Components (LWC) và Aura components. Sử dụng Tree-Sitter JS/HTML/CSS parsers cho multi-language parsing.",
+      "issueType": "Epic",
+      "labels": ["epic-6-lwc-parsers"],
+      "tasks": [
+        {
+          "summary": "Cài đặt Tree-Sitter JS/HTML/CSS parsers",
+          "description": "Thêm dependencies cho multi-language parsing:\n- tree-sitter-javascript (cho LWC JS files)\n- tree-sitter-html (cho LWC templates và Aura .cmp)\n- tree-sitter-css (cho LWC styles)\n\nCấu hình multi-parser setup để switch parser theo file extension.",
+          "issueType": "Task",
+          "labels": ["epic-6-lwc-parsers"],
+          "storyPoints": 2
+        },
+        {
+          "summary": "LWC JavaScript Parser — Parse lwc/**/*.js",
+          "description": "Parse Lightning Web Component JavaScript files using Tree-Sitter JS parser.\n\nExtract:\n- Class name (extends LightningElement)\n- @api properties (public API)\n- @track properties (reactive, deprecated but still used)\n- @wire decorators (wire adapters, params)\n- Apex method imports (import methodName from '@salesforce/apex/...')\n- Event dispatches (new CustomEvent)\n- Lifecycle hooks (connectedCallback, renderedCallback, etc.)\n- Navigation mixins\n- Toast events\n- Wire adapter references\n\nInput: LWC .js file path\nOutput: Structured JSON with component API surface",
+          "issueType": "Story",
+          "labels": ["epic-6-lwc-parsers"],
+          "storyPoints": 5
+        },
+        {
+          "summary": "LWC HTML Template Parser — Parse lwc/**/*.html",
+          "description": "Parse Lightning Web Component HTML template files.\n\nExtract:\n- Template directives (if:true, for:each, iterator)\n- Component references (<c-child-component>)\n- Data bindings ({property})\n- Event handlers (onclick, onchange, custom events)\n- Slot usage (<slot>)\n- Lightning base components used (lightning-input, lightning-datatable, etc.)\n- Conditional rendering blocks\n- Loop variables and iterators\n\nInput: LWC .html file path\nOutput: Structured JSON with template structure and bindings",
+          "issueType": "Story",
+          "labels": ["epic-6-lwc-parsers"],
+          "storyPoints": 5
+        },
+        {
+          "summary": "LWC CSS Parser — Parse lwc/**/*.css",
+          "description": "Parse Lightning Web Component CSS files.\n\nExtract:\n- Custom CSS properties (--lwc-*)\n- Component-scoped styles\n- :host selectors\n- Media queries\n- CSS custom properties usage\n- Token references\n- Styling patterns (SLDS overrides)\n\nInput: LWC .css file path\nOutput: Structured JSON with style definitions",
+          "issueType": "Story",
+          "labels": ["epic-6-lwc-parsers"],
+          "storyPoints": 3
+        },
+        {
+          "summary": "Aura Component Parser — Parse .cmp files",
+          "description": "Parse Aura Component markup files (.cmp).\n\nExtract:\n- Component attributes (aura:attribute)\n- Event registrations (aura:registerEvent)\n- Event handlers (aura:handler)\n- Component references (other Aura/LWC components)\n- Interfaces implemented (implements=)\n- Access level\n- Body content structure\n- Expression bindings ({!v.attribute})\n- Conditional rendering (aura:if)\n- Iteration (aura:iteration)\n\nInput: .cmp file path\nOutput: Structured JSON with component definition",
+          "issueType": "Story",
+          "labels": ["epic-6-lwc-parsers"],
+          "storyPoints": 5
+        },
+        {
+          "summary": "Aura Controller/Helper Parser — Parse Aura .js files",
+          "description": "Parse Aura Component controller and helper JavaScript files.\n\nExtract:\n- Controller actions (method names, parameters)\n- Helper methods\n- Server-side action calls (component.get('c.actionName'))\n- Event fire calls (event.fire())\n- Component.get/set calls\n- $A.util usage\n- Callback patterns\n- Error handling patterns\n\nInput: Aura controller.js or helper.js file path\nOutput: Structured JSON with action/method definitions",
+          "issueType": "Story",
+          "labels": ["epic-6-lwc-parsers"],
+          "storyPoints": 3
+        }
+      ]
+    },
+    {
+      "key": "Epic 7",
+      "summary": "Indexer Module (KB Integration API)",
+      "description": "Module chính export API cho project khác dùng để index toàn bộ Salesforce code vào Knowledge Base. Scan SFDX project, parse tất cả metadata types, output structured data sẵn sàng ingest vào KB.",
+      "issueType": "Epic",
+      "labels": ["epic-7-indexer"],
+      "tasks": [
+        {
+          "summary": "Thiết kế KB Schema — Output format cho mỗi metadata type",
+          "description": "Định nghĩa JSON output schema cho mỗi metadata type khi index vào KB.\n\nCần thiết kế:\n- Common fields (id, name, type, path, project, lastModified)\n- Apex-specific fields (classes, methods, dependencies, SOQL queries)\n- Flow-specific fields (nodes, connections, variables, DML)\n- Object/Field-specific fields (schema, relationships, validation)\n- LWC-specific fields (API surface, wire adapters, events)\n- Relationship/reference fields (cross-type dependencies)\n- Search-optimized text fields (for semantic search)\n- Tag/category fields (for filtering)\n\nOutput: Schema definition document + TypeScript interfaces",
+          "issueType": "Story",
+          "labels": ["epic-7-indexer"],
+          "storyPoints": 3
+        },
+        {
+          "summary": "SFDX Project Scanner — Detect all metadata files",
+          "description": "Scan thư mục SFDX project structure, phát hiện tất cả metadata files theo Salesforce DX conventions.\n\nFunctionality:\n- Read sfdx-project.json for package directories\n- Scan force-app/main/default/ (or custom paths)\n- Detect file types by extension pattern:\n  - .cls, .trigger → Apex\n  - .flow-meta.xml → Flow\n  - .object-meta.xml → Object\n  - .field-meta.xml → Field\n  - .permissionset-meta.xml → Permission Set\n  - .profile-meta.xml → Profile\n  - .labels-meta.xml → Labels\n  - .layout-meta.xml → Layout\n  - lwc/**/*.js,html,css → LWC\n  - aura/**/*.cmp,js → Aura\n- Return file manifest grouped by type\n- Support multiple package directories\n- Handle .forceignore exclusions\n\nInput: SFDX project root path\nOutput: FileManifest { [type]: FilePath[] }",
+          "issueType": "Story",
+          "labels": ["epic-7-indexer"],
+          "storyPoints": 3
+        },
+        {
+          "summary": "Apex Indexer — Extract structured data from Apex classes/triggers",
+          "description": "Use existing Tree-Sitter Apex parser to extract structured KB data from .cls and .trigger files.\n\nExtract:\n- Class: name, modifiers, parent class, interfaces, inner classes\n- Methods: name, return type, parameters, modifiers, annotations\n- Fields/Properties: name, type, modifiers, initial value\n- Annotations: @AuraEnabled, @InvocableMethod, @TestSetup, etc.\n- SOQL queries: full query text, referenced objects/fields\n- DML operations: type (insert/update/delete), target object\n- Dependencies: referenced classes, method calls to other classes\n- Test methods: test class detection, @isTest annotation\n- Sharing: with sharing, without sharing, inherited sharing\n\nInput: .cls or .trigger file path\nOutput: ApexIndexData JSON",
+          "issueType": "Story",
+          "labels": ["epic-7-indexer"],
+          "storyPoints": 5
+        },
+        {
+          "summary": "Flow Indexer — Extract flow logic for KB",
+          "description": "Use Flow Parser output to extract KB-ready structured data.\n\nExtract:\n- Flow metadata: name, type, status, API version\n- Node graph: all elements with connections\n- Variables: input/output variables, types\n- DML operations: which objects are created/updated/deleted\n- Decision logic: condition formulas, outcomes\n- Screen elements: fields, validation\n- Referenced Apex actions (invocable methods)\n- Referenced subflows\n- Error handling (fault connectors)\n\nInput: Parsed flow data (from Flow Parser)\nOutput: FlowIndexData JSON optimized for KB search",
+          "issueType": "Story",
+          "labels": ["epic-7-indexer"],
+          "storyPoints": 3
+        },
+        {
+          "summary": "Object/Field Indexer — Extract data model for KB",
+          "description": "Use Object/Field Parser output to extract complete data model for KB.\n\nExtract:\n- Object schema: name, label, sharing model, record types\n- Field definitions: name, type, formula, picklist values\n- Relationships: lookup/master-detail targets, relationship names\n- Validation rules: conditions, error messages\n- Data model graph: object-to-object relationships\n- Field usage patterns: which fields are formula, which are lookup\n- Required fields, unique fields, external IDs\n\nInput: Parsed object/field data\nOutput: DataModelIndexData JSON",
+          "issueType": "Story",
+          "labels": ["epic-7-indexer"],
+          "storyPoints": 3
+        },
+        {
+          "summary": "LWC Indexer — Extract component info for KB",
+          "description": "Use LWC Parser output to extract component information for KB.\n\nExtract:\n- Component API surface: @api properties, public methods\n- Wire adapters used: which data they fetch\n- Apex method imports: which server methods are called\n- Events: dispatched and handled events\n- Component dependencies: child components referenced\n- Template bindings: data flow from JS to HTML\n- Navigation targets\n- Component metadata (targets, masterLabel from .js-meta.xml)\n\nInput: Parsed LWC data (JS + HTML + CSS + meta)\nOutput: LWCIndexData JSON",
+          "issueType": "Story",
+          "labels": ["epic-7-indexer"],
+          "storyPoints": 3
+        },
+        {
+          "summary": "Dependency Graph Builder — Cross-component relationship graph",
+          "description": "Xây dựng dependency graph thể hiện quan hệ giữa tất cả components trong SFDX project.\n\nRelationships to track:\n- Apex → Apex (method calls, inheritance)\n- Apex → Object (SOQL references, DML targets)\n- Flow → Apex (invocable method calls)\n- Flow → Object (DML operations, record variables)\n- LWC → Apex (wire adapters, imperative calls)\n- LWC → LWC (component composition)\n- Object → Object (lookup/master-detail relationships)\n- Validation Rule → Field (referenced fields in formula)\n- Permission Set → Object/Field (access grants)\n\nOutput:\n- Adjacency list representation\n- Queryable: 'what depends on Account object?'\n- Visualizable: export to DOT/Mermaid format\n- Impact analysis: 'if I change this class, what breaks?'\n\nInput: All parsed index data\nOutput: DependencyGraph JSON + query API",
+          "issueType": "Story",
+          "labels": ["epic-7-indexer"],
+          "storyPoints": 8
+        },
+        {
+          "summary": "Export API — parseProject() main entry point",
+          "description": "Expose unified module API that orchestrates the full indexing pipeline.\n\nAPI Design:\n```typescript\n// Main entry point\nexport async function parseProject(projectPath: string, options?: ParseOptions): Promise<ProjectIndex>\n\n// Options\ninterface ParseOptions {\n  include?: MetadataType[]  // filter specific types\n  exclude?: MetadataType[]  // exclude types\n  includeGraph?: boolean    // build dependency graph\n  outputFormat?: 'json' | 'kb-payload'  // output format\n}\n\n// Output\ninterface ProjectIndex {\n  metadata: ProjectMetadata\n  apex: ApexIndexData[]\n  flows: FlowIndexData[]\n  objects: DataModelIndexData[]\n  lwc: LWCIndexData[]\n  aura: AuraIndexData[]\n  permissions: PermissionIndexData[]\n  labels: LabelIndexData[]\n  graph?: DependencyGraph\n}\n```\n\nAlso expose individual parsers for granular use:\n- parseApexFile(path)\n- parseFlowFile(path)\n- parseObjectFile(path)\n- parseLWCComponent(dirPath)\n\nInput: SFDX project path + options\nOutput: Complete ProjectIndex",
+          "issueType": "Story",
+          "labels": ["epic-7-indexer"],
+          "storyPoints": 5
+        },
+        {
+          "summary": "npm Package Config — Publish as reusable library",
+          "description": "Cấu hình package.json để publish project như npm library cho project khác import.\n\nTasks:\n- Update package.json: name, version, main, types, exports, files\n- Add TypeScript compilation (tsconfig.json)\n- Configure exports map for ESM + CJS\n- Add bin entry for CLI usage: `npx salesforce-ast parse <path>`\n- Create index.ts barrel export\n- Add prepublish script (build + test)\n- Configure .npmignore (exclude test fixtures, docs)\n- Add peer dependencies vs bundled dependencies\n- README with installation + usage examples\n- Semantic versioning setup\n\nOutput: Publishable npm package configuration",
+          "issueType": "Story",
+          "labels": ["epic-7-indexer"],
+          "storyPoints": 3
+        }
+      ]
+    },
+    {
+      "key": "Epic 8",
+      "summary": "Testing & Documentation cho Phase mở rộng",
+      "description": "Comprehensive testing và documentation cho tất cả parsers và indexer module mới. Bao gồm unit tests, integration tests, sample data, và API docs.",
+      "issueType": "Epic",
+      "labels": ["epic-8-testing"],
+      "tasks": [
+        {
+          "summary": "Unit tests cho XML parsers",
+          "description": "Viết unit tests cho tất cả XML metadata parsers.\n\nCoverage:\n- Flow Parser: test parse decisions, assignments, variables, DML, screens\n- Object Parser: test parse fields, relationships, record types, validation rules\n- Field Parser: test parse formula, picklist, lookup, text fields\n- Validation Rule Parser: test parse condition, error message\n- Permission Set Parser: test parse object/field permissions\n- Label Parser: test parse label values, categories\n- Layout Parser: test parse sections, fields, related lists\n\nEach parser needs:\n- Happy path tests (valid XML)\n- Edge cases (empty elements, missing optional fields)\n- Error handling (malformed XML, missing required fields)\n\nMin coverage: 80% per parser",
+          "issueType": "Story",
+          "labels": ["epic-8-testing"],
+          "storyPoints": 5
+        },
+        {
+          "summary": "Unit tests cho LWC/Aura parsers",
+          "description": "Viết unit tests cho LWC và Aura component parsers.\n\nCoverage:\n- LWC JS Parser: @api, @track, @wire, apex imports, events, lifecycle\n- LWC HTML Parser: directives, bindings, component refs, slots\n- LWC CSS Parser: custom properties, :host, media queries\n- Aura Component Parser: attributes, events, handlers, expressions\n- Aura Controller Parser: actions, server calls, event fire\n\nEach parser needs:\n- Real-world component examples\n- Complex nested structures\n- Edge cases (empty components, multiple decorators)\n\nMin coverage: 80% per parser",
+          "issueType": "Story",
+          "labels": ["epic-8-testing"],
+          "storyPoints": 5
+        },
+        {
+          "summary": "Integration test — Full pipeline scan → parse → output",
+          "description": "End-to-end integration test: scan sample SFDX project → parse all metadata → output KB-ready data.\n\nTest scenarios:\n1. Full project scan: verify all file types detected\n2. Full parse pipeline: verify all parsers produce valid output\n3. Dependency graph: verify cross-references are correct\n4. Export API: verify parseProject() returns complete data\n5. Error resilience: verify pipeline continues when individual files fail\n6. Performance: verify full project parse completes within acceptable time\n7. Incremental: verify re-parse only processes changed files\n\nAssertions:\n- Output matches expected JSON schema\n- All relationships in graph are bidirectional\n- No orphan references\n- Parse errors are collected, not thrown",
+          "issueType": "Story",
+          "labels": ["epic-8-testing"],
+          "storyPoints": 5
+        },
+        {
+          "summary": "Sample SFDX project — Test fixtures with all metadata types",
+          "description": "Tạo sample SFDX project structure với đầy đủ metadata types để dùng làm test fixtures.\n\nInclude:\n- sfdx-project.json\n- force-app/main/default/classes/ (3-5 Apex classes + triggers)\n- force-app/main/default/flows/ (2-3 flows: screen, record-triggered)\n- force-app/main/default/objects/ (2-3 custom objects with fields, validation rules)\n- force-app/main/default/permissionsets/ (1 permission set)\n- force-app/main/default/profiles/ (1 profile)\n- force-app/main/default/labels/ (custom labels file)\n- force-app/main/default/layouts/ (1-2 layouts)\n- force-app/main/default/lwc/ (2-3 LWC components)\n- force-app/main/default/aura/ (1-2 Aura components)\n\nAll files should be realistic Salesforce metadata (not dummy/placeholder).",
+          "issueType": "Story",
+          "labels": ["epic-8-testing"],
+          "storyPoints": 3
+        },
+        {
+          "summary": "API Documentation — README, JSDoc, usage examples",
+          "description": "Viết comprehensive documentation cho indexer API.\n\nDeliverables:\n- README.md: Overview, installation, quick start, API reference\n- JSDoc comments on all public functions/interfaces\n- Usage examples:\n  - Parse single Apex file\n  - Parse full SFDX project\n  - Query dependency graph\n  - Export to KB format\n  - CLI usage\n- Architecture diagram (how parsers connect to indexer)\n- Contributing guide\n- Changelog\n\nFormat: Markdown + inline JSDoc",
+          "issueType": "Story",
+          "labels": ["epic-8-testing"],
+          "storyPoints": 3
+        },
+        {
+          "summary": "Update BRD/FSD/TDD — Cập nhật tài liệu SDLC cho phase mở rộng",
+          "description": "Cập nhật tất cả tài liệu SDLC hiện có để reflect phase mở rộng.\n\nUpdates needed:\n- BRD.md: Thêm user stories cho XML parsers, LWC parsers, Indexer module\n- FSD.md: Thêm functional specs cho mỗi parser type, API contracts\n- TDD.md: Thêm technical design cho XML parsing, multi-parser architecture, indexer module\n- STP.md/STC.md: Thêm test cases cho new parsers\n\nEnsure:\n- Version bump trên mỗi document\n- Traceability matrix updated\n- New epics (5-8) referenced in Related Tickets section",
+          "issueType": "Story",
+          "labels": ["epic-8-testing"],
+          "storyPoints": 5
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalEpics": 4,
+    "totalTasks": 29,
+    "totalStoryPoints": 106,
+    "breakdown": {
+      "Epic 5 (XML Parsers)": { "tasks": 8, "points": 25 },
+      "Epic 6 (LWC/Aura)": { "tasks": 6, "points": 23 },
+      "Epic 7 (Indexer)": { "tasks": 9, "points": 36 },
+      "Epic 8 (Testing & Docs)": { "tasks": 6, "points": 26 }
+    }
+  }
+}

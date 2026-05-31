@@ -1,0 +1,48 @@
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="600" math="0" shadow="0" adaptiveColors="auto">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="title" value="&lt;b&gt;AA-4: WASM Build Pipeline (parser.c to .wasm)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="400" y="10" width="400" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="parser_c" value="&lt;b&gt;src/parser.c&lt;/b&gt;&#xa;Generated C code&#xa;(~500KB)" style="shape=mxgraph.flowchart.document;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c62828;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="60" y="100" width="160" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="scanner_c" value="&lt;b&gt;src/scanner.c&lt;/b&gt;&#xa;External scanner&#xa;(if exists)" style="shape=mxgraph.flowchart.document;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c62828;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="60" y="220" width="160" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="emscripten" value="&lt;b&gt;Emscripten (emcc)&lt;/b&gt;&#xa;tree-sitter build --wasm&#xa;C to WebAssembly" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="340" y="140" width="200" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="wasm_file" value="&lt;b&gt;tree-sitter-apex.wasm&lt;/b&gt;&#xa;WebAssembly binary&#xa;(~300KB)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="660" y="140" width="200" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="web_ts" value="&lt;b&gt;web-tree-sitter&lt;/b&gt;&#xa;Browser runtime&#xa;Language.load(wasm)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="660" y="280" width="200" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="browser" value="&lt;b&gt;Browser / VS Code&lt;/b&gt;&#xa;Web extension&#xa;Syntax highlighting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="660" y="420" width="200" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="docker" value="&lt;b&gt;Docker (optional)&lt;/b&gt;&#xa;emscripten/emsdk&#xa;Consistent build env" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="340" y="280" width="200" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="e1" value="input" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="parser_c" target="emscripten" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e2" value="input" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="scanner_c" target="emscripten" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e3" value="produces" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="emscripten" target="wasm_file" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e4" value="loads" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="web_ts" target="wasm_file" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e5" value="uses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="browser" target="web_ts" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e6" value="provides env" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;dashed=1;" edge="1" source="docker" target="emscripten" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

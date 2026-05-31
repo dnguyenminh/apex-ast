@@ -1,0 +1,153 @@
+==================
+Variable Declaration Simple String
+==================
+
+public class VarTest {
+    public void test() {
+        String name = 'hello';
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (local_variable_declaration
+            type: (type_identifier)
+            declarator: (variable_declarator
+              name: (identifier)
+              (assignment_operator)
+              value: (string_literal))))))))
+
+==================
+Variable Declaration Integer
+==================
+
+public class VarTest {
+    public void test() {
+        Integer count = 42;
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (local_variable_declaration
+            type: (type_identifier)
+            declarator: (variable_declarator
+              name: (identifier)
+              (assignment_operator)
+              value: (int))))))))
+
+==================
+Variable Declaration List Generic
+==================
+
+public class VarTest {
+    public void test() {
+        List<String> names = new List<String>();
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (local_variable_declaration
+            type: (generic_type
+              (type_identifier)
+              (type_arguments
+                (type_identifier)))
+            declarator: (variable_declarator
+              name: (identifier)
+              (assignment_operator)
+              value: (object_creation_expression
+                type: (generic_type
+                  (type_identifier)
+                  (type_arguments
+                    (type_identifier)))
+                arguments: (argument_list)))))))))
+
+==================
+Variable Declaration Map Generic
+==================
+
+public class VarTest {
+    public void test() {
+        Map<String, Integer> counts = new Map<String, Integer>();
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (local_variable_declaration
+            type: (generic_type
+              (type_identifier)
+              (type_arguments
+                (type_identifier)
+                (type_identifier)))
+            declarator: (variable_declarator
+              name: (identifier)
+              (assignment_operator)
+              value: (object_creation_expression
+                type: (generic_type
+                  (type_identifier)
+                  (type_arguments
+                    (type_identifier)
+                    (type_identifier)))
+                arguments: (argument_list)))))))))

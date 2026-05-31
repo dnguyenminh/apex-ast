@@ -1,0 +1,289 @@
+==================
+DML Insert Statement
+==================
+
+public class DmlTest {
+    public void test() {
+        Account a = new Account(Name='Test');
+        insert a;
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (local_variable_declaration
+            type: (type_identifier)
+            declarator: (variable_declarator
+              name: (identifier)
+              (assignment_operator)
+              value: (object_creation_expression
+                type: (type_identifier)
+                arguments: (argument_list
+                  (assignment_expression
+                    left: (identifier)
+                    operator: (assignment_operator)
+                    right: (string_literal))))))
+          (expression_statement
+            (dml_expression
+              (dml_type
+                (insert))
+              target: (identifier))))))))
+
+==================
+DML Update Statement
+==================
+
+public class DmlTest {
+    public void test() {
+        Account a = new Account(Name='Test');
+        update a;
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (local_variable_declaration
+            type: (type_identifier)
+            declarator: (variable_declarator
+              name: (identifier)
+              (assignment_operator)
+              value: (object_creation_expression
+                type: (type_identifier)
+                arguments: (argument_list
+                  (assignment_expression
+                    left: (identifier)
+                    operator: (assignment_operator)
+                    right: (string_literal))))))
+          (expression_statement
+            (dml_expression
+              (dml_type
+                (update))
+              target: (identifier))))))))
+
+==================
+DML Delete Statement
+==================
+
+public class DmlTest {
+    public void test() {
+        Account a = new Account(Name='Test');
+        delete a;
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (local_variable_declaration
+            type: (type_identifier)
+            declarator: (variable_declarator
+              name: (identifier)
+              (assignment_operator)
+              value: (object_creation_expression
+                type: (type_identifier)
+                arguments: (argument_list
+                  (assignment_expression
+                    left: (identifier)
+                    operator: (assignment_operator)
+                    right: (string_literal))))))
+          (expression_statement
+            (dml_expression
+              (dml_type
+                (delete))
+              target: (identifier))))))))
+
+==================
+DML Upsert Statement
+==================
+
+public class DmlTest {
+    public void test() {
+        Account a = new Account(Name='Test');
+        upsert a;
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (local_variable_declaration
+            type: (type_identifier)
+            declarator: (variable_declarator
+              name: (identifier)
+              (assignment_operator)
+              value: (object_creation_expression
+                type: (type_identifier)
+                arguments: (argument_list
+                  (assignment_expression
+                    left: (identifier)
+                    operator: (assignment_operator)
+                    right: (string_literal))))))
+          (expression_statement
+            (dml_expression
+              (dml_type
+                (upsert))
+              target: (identifier))))))))
+
+==================
+DML Undelete Statement
+==================
+
+public class DmlTest {
+    public void test() {
+        Account a = new Account(Name='Test');
+        undelete a;
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (local_variable_declaration
+            type: (type_identifier)
+            declarator: (variable_declarator
+              name: (identifier)
+              (assignment_operator)
+              value: (object_creation_expression
+                type: (type_identifier)
+                arguments: (argument_list
+                  (assignment_expression
+                    left: (identifier)
+                    operator: (assignment_operator)
+                    right: (string_literal))))))
+          (expression_statement
+            (dml_expression
+              (dml_type
+                (undelete))
+              target: (identifier))))))))
+
+==================
+DML Merge Statement
+==================
+
+public class DmlMerge {
+    public void test() {
+        Account master = new Account(Name='Master');
+        Account dup = new Account(Name='Dup');
+        merge master dup;
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (local_variable_declaration
+            type: (type_identifier)
+            declarator: (variable_declarator
+              name: (identifier)
+              (assignment_operator)
+              value: (object_creation_expression
+                type: (type_identifier)
+                arguments: (argument_list
+                  (assignment_expression
+                    left: (identifier)
+                    operator: (assignment_operator)
+                    right: (string_literal))))))
+          (local_variable_declaration
+            type: (type_identifier)
+            declarator: (variable_declarator
+              name: (identifier)
+              (assignment_operator)
+              value: (object_creation_expression
+                type: (type_identifier)
+                arguments: (argument_list
+                  (assignment_expression
+                    left: (identifier)
+                    operator: (assignment_operator)
+                    right: (string_literal))))))
+          (expression_statement
+            (dml_expression
+              (dml_type
+                (merge))
+              target: (identifier)
+              merge_with: (identifier))))))))

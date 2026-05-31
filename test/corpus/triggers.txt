@@ -1,0 +1,66 @@
+==================
+Trigger Declaration
+==================
+
+trigger AccountTrigger on Account (before insert, after update) {
+    for (Account a : Trigger.new) {
+        a.Name = 'Updated';
+    }
+}
+
+---
+
+(parser_output
+  (trigger_declaration
+    name: (identifier)
+    object: (identifier)
+    events: (trigger_event
+      (before_insert))
+    events: (trigger_event
+      (after_update))
+    body: (trigger_body
+      (block
+        (enhanced_for_statement
+          type: (type_identifier)
+          name: (identifier)
+          value: (field_access
+            object: (identifier)
+            field: (identifier))
+          body: (block
+            (expression_statement
+              (assignment_expression
+                left: (field_access
+                  object: (identifier)
+                  field: (identifier))
+                operator: (assignment_operator)
+                right: (string_literal)))))))))
+
+==================
+Trigger Context Variables
+==================
+
+trigger ContactTrigger on Contact (after insert) {
+    List<Contact> newContacts = Trigger.new;
+}
+
+---
+
+(parser_output
+  (trigger_declaration
+    name: (identifier)
+    object: (identifier)
+    events: (trigger_event
+      (after_insert))
+    body: (trigger_body
+      (block
+        (local_variable_declaration
+          type: (generic_type
+            (type_identifier)
+            (type_arguments
+              (type_identifier)))
+          declarator: (variable_declarator
+            name: (identifier)
+            (assignment_operator)
+            value: (field_access
+              object: (identifier)
+              field: (identifier))))))))

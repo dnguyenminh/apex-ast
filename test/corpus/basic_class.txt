@@ -1,0 +1,190 @@
+==================
+Test Parse Class Apex Don Gian
+==================
+
+public class MyHelloWorld {
+    public void sayHello() {
+        System.debug('Hello World');
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (expression_statement
+            (method_invocation
+              object: (identifier)
+              name: (identifier)
+              arguments: (argument_list
+                (string_literal)))))))))
+
+==================
+Test Parse SOQL Long Nhau
+==================
+
+public class AccountService {
+    public void getAccounts() {
+        List<Account> acts = [SELECT Id, Name, (SELECT LastName FROM Contacts) FROM Account];
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (local_variable_declaration
+            type: (generic_type
+              (type_identifier)
+              (type_arguments
+                (type_identifier)))
+            declarator: (variable_declarator
+              name: (identifier)
+              (assignment_operator)
+              value: (query_expression
+                (soql_query_body
+                  select_clause: (select_clause
+                    (field_identifier
+                      (identifier))
+                    (field_identifier
+                      (identifier))
+                    (subquery
+                      (soql_query_body
+                        select_clause: (select_clause
+                          (field_identifier
+                            (identifier)))
+                        from_clause: (from_clause
+                          (storage_identifier
+                            (identifier))))))
+                  from_clause: (from_clause
+                    (storage_identifier
+                      (identifier))))))))))))
+
+==================
+Nested Class Declaration
+==================
+
+public class Outer {
+    public class Inner {
+        public String name;
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (class_declaration
+        (modifiers
+          (modifier
+            (public)))
+        name: (identifier)
+        body: (class_body
+          (field_declaration
+            (modifiers
+              (modifier
+                (public)))
+            type: (type_identifier)
+            declarator: (variable_declarator
+              name: (identifier))))))))
+
+==================
+Virtual Abstract Class
+==================
+
+public virtual class BaseService {
+    protected abstract void execute();
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public))
+      (modifier
+        (virtual)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (protected))
+          (modifier
+            (abstract)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)))))
+
+==================
+Class with Field Declarations
+==================
+
+public class FieldTest {
+    public static final String API_VERSION = '58.0';
+    private Integer count = 0;
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (field_declaration
+        (modifiers
+          (modifier
+            (public))
+          (modifier
+            (static))
+          (modifier
+            (final)))
+        type: (type_identifier)
+        declarator: (variable_declarator
+          name: (identifier)
+          (assignment_operator)
+          value: (string_literal)))
+      (field_declaration
+        (modifiers
+          (modifier
+            (private)))
+        type: (type_identifier)
+        declarator: (variable_declarator
+          name: (identifier)
+          (assignment_operator)
+          value: (int))))))

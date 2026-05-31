@@ -1,0 +1,109 @@
+==================
+Static Method with Return
+==================
+
+public class Utils {
+    public static String getName() {
+        return 'test';
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public))
+          (modifier
+            (static)))
+        type: (type_identifier)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (return_statement
+            (string_literal)))))))
+
+==================
+Method with Multiple Parameters
+==================
+
+public class Service {
+    public void process(String name, Integer count) {
+        System.debug(name);
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters
+          (formal_parameter
+            type: (type_identifier)
+            name: (identifier))
+          (formal_parameter
+            type: (type_identifier)
+            name: (identifier)))
+        body: (block
+          (expression_statement
+            (method_invocation
+              object: (identifier)
+              name: (identifier)
+              arguments: (argument_list
+                (identifier)))))))))
+
+==================
+Method with Return Type and Arithmetic
+==================
+
+public class Calculator {
+    public Integer add(Integer a, Integer b) {
+        return a + b;
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (modifier
+            (public)))
+        type: (type_identifier)
+        name: (identifier)
+        parameters: (formal_parameters
+          (formal_parameter
+            type: (type_identifier)
+            name: (identifier))
+          (formal_parameter
+            type: (type_identifier)
+            name: (identifier)))
+        body: (block
+          (return_statement
+            (binary_expression
+              left: (identifier)
+              right: (identifier))))))))

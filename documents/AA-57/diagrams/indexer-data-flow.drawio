@@ -1,0 +1,81 @@
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="700" math="0" shadow="0" adaptiveColors="auto">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="title" value="&lt;b&gt;Indexer Data Flow: SFDX Project → Scanner → Parsers → Indexers → KB Payload&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="300" y="10" width="600" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="sfdx_project" value="&lt;b&gt;SFDX Project&lt;/b&gt;&#10;sfdx-project.json&#10;force-app/" style="shape=mxgraph.flowchart.document;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="60" y="200" width="160" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="scanner" value="&lt;b&gt;SFDX Scanner&lt;/b&gt;&#10;scanProject()&#10;→ FileManifest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="300" y="200" width="160" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="manifest" value="&lt;b&gt;FileManifest&lt;/b&gt;&#10;{ apex: [], flows: [],&#10;objects: [], lwc: [] }" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="300" y="320" width="160" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="apex_idx" value="&lt;b&gt;Apex Indexer&lt;/b&gt;&#10;indexApexFile()&#10;Classes, SOQL, DML" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="540" y="80" width="160" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="flow_idx" value="&lt;b&gt;Flow Indexer&lt;/b&gt;&#10;indexFlowFile()&#10;Nodes, DML, Subflows" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="540" y="180" width="160" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="obj_idx" value="&lt;b&gt;Object Indexer&lt;/b&gt;&#10;indexObjectFile()&#10;Schema, Relationships" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="540" y="280" width="160" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="lwc_idx" value="&lt;b&gt;LWC Indexer&lt;/b&gt;&#10;indexLWCComponent()&#10;API, Wire, Events" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="540" y="380" width="160" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="dep_graph" value="&lt;b&gt;Dependency Graph&lt;/b&gt;&#10;buildDependencyGraph()&#10;Nodes + Edges" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="800" y="200" width="170" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="kb_payload" value="&lt;b&gt;toKBPayload()&lt;/b&gt;&#10;id, type, title,&#10;content, searchText, tags" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="800" y="340" width="170" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="output_json" value="&lt;b&gt;ProjectIndex JSON&lt;/b&gt;&#10;metadata + apex + flows&#10;+ objects + lwc + graph" style="shape=mxgraph.flowchart.document;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1060" y="200" width="180" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="kb_output" value="&lt;b&gt;KB Payloads[]&lt;/b&gt;&#10;Ready for ingestion" style="shape=mxgraph.flowchart.document;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1060" y="340" width="180" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="e1" value="reads" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="sfdx_project" target="scanner" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e2" value="produces" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="scanner" target="manifest" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e3" value=".cls/.trigger" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="manifest" target="apex_idx" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e4" value=".flow-meta.xml" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="manifest" target="flow_idx" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e5" value=".object-meta.xml" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="manifest" target="obj_idx" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e6" value="lwc/**/*" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="manifest" target="lwc_idx" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e7" value="all indexed data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="apex_idx" target="dep_graph" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="flow_idx" target="dep_graph" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="obj_idx" target="dep_graph" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="lwc_idx" target="dep_graph" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="dep_graph" target="output_json" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e12" value="convert" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="dep_graph" target="kb_payload" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="kb_payload" target="kb_output" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

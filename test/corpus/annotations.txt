@@ -1,0 +1,139 @@
+==================
+Annotation isTest
+==================
+
+@isTest
+public class MyTest {
+    @isTest
+    static void testMethod() {
+        System.assert(true);
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (annotation
+        name: (identifier))
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (annotation
+            name: (identifier))
+          (modifier
+            (static)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (expression_statement
+            (method_invocation
+              object: (identifier)
+              name: (identifier)
+              arguments: (argument_list
+                (boolean)))))))))
+
+==================
+Annotation AuraEnabled with Parameters
+==================
+
+public class AuraTest {
+    @AuraEnabled(cacheable=true)
+    public static List<Account> getAccounts() {
+        return [SELECT Id FROM Account];
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (annotation
+            name: (identifier)
+            arguments: (annotation_argument_list
+              (annotation_key_value
+                key: (identifier)
+                (assignment_operator)
+                value: (boolean))))
+          (modifier
+            (public))
+          (modifier
+            (static)))
+        type: (generic_type
+          (type_identifier)
+          (type_arguments
+            (type_identifier)))
+        name: (identifier)
+        parameters: (formal_parameters)
+        body: (block
+          (return_statement
+            (query_expression
+              (soql_query_body
+                select_clause: (select_clause
+                  (field_identifier
+                    (identifier)))
+                from_clause: (from_clause
+                  (storage_identifier
+                    (identifier)))))))))))
+
+==================
+Annotation InvocableMethod
+==================
+
+public class InvocableTest {
+    @InvocableMethod(label='Process Records')
+    public static void process(List<Id> ids) {
+        System.debug(ids);
+    }
+}
+
+---
+
+(parser_output
+  (class_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (class_body
+      (method_declaration
+        (modifiers
+          (annotation
+            name: (identifier)
+            arguments: (annotation_argument_list
+              (annotation_key_value
+                key: (identifier)
+                (assignment_operator)
+                value: (string_literal))))
+          (modifier
+            (public))
+          (modifier
+            (static)))
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters
+          (formal_parameter
+            type: (generic_type
+              (type_identifier)
+              (type_arguments
+                (type_identifier)))
+            name: (identifier)))
+        body: (block
+          (expression_statement
+            (method_invocation
+              object: (identifier)
+              name: (identifier)
+              arguments: (argument_list
+                (identifier)))))))))

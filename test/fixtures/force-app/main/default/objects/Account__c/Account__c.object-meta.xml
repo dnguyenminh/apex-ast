@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Custom Account</label>
+    <pluralLabel>Custom Accounts</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
+    <enableActivities>true</enableActivities>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <nameField>
+        <type>Text</type>
+    </nameField>
+    <fields>
+        <fullName>Email__c</fullName>
+        <label>Email</label>
+        <type>Email</type>
+        <required>true</required>
+        <unique>true</unique>
+        <externalId>false</externalId>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <label>Status</label>
+        <type>Picklist</type>
+        <required>false</required>
+        <valueSet>
+            <valueSetDefinition>
+                <value>
+                    <fullName>Active</fullName>
+                    <label>Active</label>
+                    <isActive>true</isActive>
+                    <default>true</default>
+                </value>
+                <value>
+                    <fullName>Inactive</fullName>
+                    <label>Inactive</label>
+                    <isActive>true</isActive>
+                    <default>false</default>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Parent_Account__c</fullName>
+        <label>Parent Account</label>
+        <type>Lookup</type>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>ChildAccounts</relationshipName>
+        <deleteConstraint>SetNull</deleteConstraint>
+    </fields>
+    <validationRules>
+        <fullName>Email_Required_For_Active</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(ISPICKVAL(Status__c, "Active"), ISBLANK(Email__c))</errorConditionFormula>
+        <errorMessage>Email is required for active accounts.</errorMessage>
+        <errorDisplayField>Email__c</errorDisplayField>
+    </validationRules>
+    <recordTypes>
+        <fullName>Enterprise</fullName>
+        <label>Enterprise</label>
+        <active>true</active>
+    </recordTypes>
+    <listViews>
+        <fullName>All_Active</fullName>
+        <label>All Active Accounts</label>
+        <columns>Email__c</columns>
+        <columns>Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filters>
+    </listViews>
+</CustomObject>

@@ -1,0 +1,48 @@
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="600" math="0" shadow="0" adaptiveColors="auto">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="title" value="&lt;b&gt;AA-56: LWC Multi-Parser Architecture&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="450" y="10" width="320" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="lwc_dir" value="&lt;b&gt;LWC Component Directory&lt;/b&gt;&#xa;myComponent/&#xa;  myComponent.js&#xa;  myComponent.html&#xa;  myComponent.css" style="shape=mxgraph.flowchart.document;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="60" y="120" width="200" height="100" as="geometry"/>
+    </mxCell>
+    <mxCell id="js_parser" value="&lt;b&gt;lwc-js-parser.js&lt;/b&gt;&#xa;Parse JavaScript&#xa;Extract: @api, @wire,&#xa;imports, methods" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="380" y="60" width="180" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="html_parser" value="&lt;b&gt;lwc-html-parser.js&lt;/b&gt;&#xa;Parse HTML template&#xa;Extract: child components,&#xa;event handlers, iterators" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="380" y="170" width="180" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="css_parser" value="&lt;b&gt;lwc-css-parser.js&lt;/b&gt;&#xa;Parse CSS&#xa;Extract: custom properties,&#xa;host selectors" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="380" y="280" width="180" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="merger" value="&lt;b&gt;Component Merger&lt;/b&gt;&#xa;Combine JS + HTML + CSS&#xa;into unified LWCData" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="680" y="170" width="180" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="output" value="&lt;b&gt;LWCIndexData&lt;/b&gt;&#xa;{ api, wire, events,&#xa;  children, imports,&#xa;  styles }" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="960" y="170" width="180" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="e1" value=".js" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="lwc_dir" target="js_parser" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e2" value=".html" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="lwc_dir" target="html_parser" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e3" value=".css" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="lwc_dir" target="css_parser" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="js_parser" target="merger" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="html_parser" target="merger" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="css_parser" target="merger" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="merger" target="output" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

@@ -1,0 +1,27 @@
+:host {
+    display: block;
+    --account-card-bg: var(--lwc-colorBackground, #ffffff);
+    --account-card-border: var(--lwc-borderWidthThin, 1px) solid var(--lwc-colorBorder, #dddbda);
+}
+
+.account-row {
+    padding: 0.5rem;
+    border-bottom: var(--account-card-border);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.account-row:hover {
+    background-color: var(--lwc-colorBackgroundRowHover, #f3f2f2);
+}
+
+.error-message {
+    color: var(--lwc-colorTextError, #c23934);
+    padding: 1rem;
+}
+
+@media (max-width: 768px) {
+    .account-row {
+        padding: 0.25rem;
+    }
+}

@@ -1,0 +1,123 @@
+<mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0" adaptiveColors="auto">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="title" value="&lt;b&gt;Salesforce AST — Architecture Overview&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="550" y="10" width="340" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="entry" value="&lt;b&gt;index.js&lt;/b&gt;&#10;Main Entry Point" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="620" y="60" width="160" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="parser_boundary" value="Parser Layer" style="shape=rectangle;dashed=1;fillColor=none;strokeColor=#666666;verticalAlign=top;fontStyle=1;fontSize=14;spacingTop=10;html=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="180" width="680" height="200" as="geometry"/>
+    </mxCell>
+    <mxCell id="apex_parser" value="&lt;b&gt;Apex Parser&lt;/b&gt;&#10;(Tree-Sitter)&#10;.cls, .trigger → AST" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="90" y="230" width="150" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="xml_parsers" value="&lt;b&gt;XML Parsers&lt;/b&gt;&#10;(fast-xml-parser)&#10;Flow, Object, Field&#10;Permission, Label, Layout" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="270" y="230" width="160" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="lwc_parsers" value="&lt;b&gt;LWC Parsers&lt;/b&gt;&#10;(JS + HTML + CSS)&#10;Components, Wire&#10;Events, Imports" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="460" y="230" width="150" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="aura_parser" value="&lt;b&gt;Aura Parser&lt;/b&gt;&#10;(planned)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;dashed=1;" vertex="1" parent="1">
+      <mxGeometry x="640" y="230" width="80" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="indexer_boundary" value="Indexer Layer" style="shape=rectangle;dashed=1;fillColor=none;strokeColor=#666666;verticalAlign=top;fontStyle=1;fontSize=14;spacingTop=10;html=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="430" width="680" height="180" as="geometry"/>
+    </mxCell>
+    <mxCell id="scanner" value="&lt;b&gt;SFDX Scanner&lt;/b&gt;&#10;sfdx-project.json&#10;→ FileManifest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="90" y="480" width="150" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="apex_indexer" value="&lt;b&gt;Apex Indexer&lt;/b&gt;&#10;Classes, Methods&#10;SOQL, DML" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="270" y="480" width="130" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="flow_indexer" value="&lt;b&gt;Flow Indexer&lt;/b&gt;&#10;Nodes, DML&#10;Subflows" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="420" y="480" width="130" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="obj_indexer" value="&lt;b&gt;Object Indexer&lt;/b&gt;&#10;Schema, Fields&#10;Relationships" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="570" y="480" width="130" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="lwc_indexer" value="&lt;b&gt;LWC Indexer&lt;/b&gt;&#10;API, Wire&#10;Children" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="270" y="560" width="130" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="dep_graph" value="&lt;b&gt;Dependency Graph&lt;/b&gt;&#10;Builder&#10;Nodes + Edges + Impact" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;fontStyle=0;" vertex="1" parent="1">
+      <mxGeometry x="840" y="430" width="180" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="kb_payload" value="&lt;b&gt;KB Payload&lt;/b&gt;&#10;Generator&#10;toKBPayload()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="840" y="530" width="180" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="output" value="&lt;b&gt;ProjectIndex JSON&lt;/b&gt;&#10;AST + Graph + Metadata" style="shape=mxgraph.flowchart.document;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1100" y="460" width="180" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="ts_core" value="&lt;b&gt;Tree-Sitter Core&lt;/b&gt;&#10;.node (Native)&#10;.wasm (Browser)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="840" y="230" width="180" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="grammar" value="&lt;b&gt;grammar.js&lt;/b&gt;&#10;Apex Grammar DSL&#10;(inherits sfapex)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="1100" y="230" width="180" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="entry" target="parser_boundary" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="entry" target="indexer_boundary" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e3" value="uses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="apex_parser" target="ts_core" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e4" value="loads" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="ts_core" target="grammar" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e5" value="feeds" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="indexer_boundary" target="dep_graph" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="dep_graph" target="output" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="kb_payload" target="output" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e8" value="scans" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;fontSize=10;" edge="1" source="scanner" target="apex_indexer" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="scanner" target="flow_indexer" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;endSize=6;" edge="1" source="scanner" target="obj_indexer" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="legend_title" value="&lt;b&gt;Legend&lt;/b&gt;" style="text;html=1;align=left;fontSize=11;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+      <mxGeometry x="1100" y="100" width="60" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="leg1" value="" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="1100" y="125" width="16" height="12" as="geometry"/>
+    </mxCell>
+    <mxCell id="leg1t" value="Apex / Tree-Sitter" style="text;html=1;align=left;fontSize=10;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+      <mxGeometry x="1120" y="122" width="110" height="18" as="geometry"/>
+    </mxCell>
+    <mxCell id="leg2" value="" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="1100" y="143" width="16" height="12" as="geometry"/>
+    </mxCell>
+    <mxCell id="leg2t" value="XML Metadata" style="text;html=1;align=left;fontSize=10;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+      <mxGeometry x="1120" y="140" width="110" height="18" as="geometry"/>
+    </mxCell>
+    <mxCell id="leg3" value="" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+      <mxGeometry x="1100" y="161" width="16" height="12" as="geometry"/>
+    </mxCell>
+    <mxCell id="leg3t" value="LWC Components" style="text;html=1;align=left;fontSize=10;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+      <mxGeometry x="1120" y="158" width="110" height="18" as="geometry"/>
+    </mxCell>
+    <mxCell id="leg4" value="" style="rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+      <mxGeometry x="1100" y="179" width="16" height="12" as="geometry"/>
+    </mxCell>
+    <mxCell id="leg4t" value="Graph / Output" style="text;html=1;align=left;fontSize=10;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+      <mxGeometry x="1120" y="176" width="110" height="18" as="geometry"/>
+    </mxCell>
+    <mxCell id="leg5" value="" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="1100" y="197" width="16" height="12" as="geometry"/>
+    </mxCell>
+    <mxCell id="leg5t" value="Entry / Scanner" style="text;html=1;align=left;fontSize=10;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+      <mxGeometry x="1120" y="194" width="110" height="18" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

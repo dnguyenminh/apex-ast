@@ -1,0 +1,15 @@
+{
+  "project": "AA",
+  "projectName": "Salesforce Apex AST Parser",
+  "currentPhase": "done",
+  "phases": {
+    "requirements": { "status": "done", "file": "BRD.md", "version": 1, "completedAt": "2025-01-27T10:00:00Z" },
+    "specification": { "status": "done", "file": "FSD.md", "version": 1, "completedAt": "2025-01-27T10:10:00Z" },
+    "design": { "status": "done", "file": "TDD.md", "version": 1, "completedAt": "2025-01-27T10:20:00Z" },
+    "test_planning": { "status": "done", "files": ["STP.md", "STC.md"], "version": 1, "completedAt": "2025-01-27T10:30:00Z" },
+    "user_guide": { "status": "done", "file": "UG.md", "version": 1, "completedAt": "2025-01-27T10:40:00Z" },
+    "release_notes": { "status": "done", "file": "RLN.md", "version": 1, "completedAt": "2025-01-27T10:50:00Z" },
+    "testing": { "status": "done", "testFiles": 7, "testCases": 10, "passRate": "100%", "completedAt": "2025-01-27T11:00:00Z" }
+  },
+  "lastUpdated": "2025-01-27T11:00:00Z"
+}

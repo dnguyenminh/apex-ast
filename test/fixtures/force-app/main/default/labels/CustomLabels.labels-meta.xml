@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Welcome_Message</fullName>
+        <value>Welcome to our application</value>
+        <language>en_US</language>
+        <shortDescription>Welcome message shown on home page</shortDescription>
+        <categories>UI</categories>
+        <protected>false</protected>
+    </labels>
+    <labels>
+        <fullName>Error_Required_Field</fullName>
+        <value>This field is required</value>
+        <language>en_US</language>
+        <shortDescription>Generic required field error</shortDescription>
+        <categories>Errors</categories>
+        <protected>false</protected>
+    </labels>
+    <labels>
+        <fullName>Button_Save</fullName>
+        <value>Save</value>
+        <language>en_US</language>
+        <shortDescription>Save button label</shortDescription>
+        <categories>UI,Buttons</categories>
+        <protected>false</protected>
+    </labels>
+</CustomLabels>

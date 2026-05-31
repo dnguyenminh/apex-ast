@@ -1,0 +1,57 @@
+==================
+Interface Declaration
+==================
+
+public interface Callable {
+    void execute(String action);
+}
+
+---
+
+(parser_output
+  (interface_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (interface_body
+      (method_declaration
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters
+          (formal_parameter
+            type: (type_identifier)
+            name: (identifier)))))))
+
+==================
+Multi Method Interface
+==================
+
+public interface DataService {
+    List<Account> getAccounts();
+    void saveAccount(Account a);
+}
+
+---
+
+(parser_output
+  (interface_declaration
+    (modifiers
+      (modifier
+        (public)))
+    name: (identifier)
+    body: (interface_body
+      (method_declaration
+        type: (generic_type
+          (type_identifier)
+          (type_arguments
+            (type_identifier)))
+        name: (identifier)
+        parameters: (formal_parameters))
+      (method_declaration
+        type: (void_type)
+        name: (identifier)
+        parameters: (formal_parameters
+          (formal_parameter
+            type: (type_identifier)
+            name: (identifier)))))))
